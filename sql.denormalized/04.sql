@@ -1,7 +1,8 @@
 /*
  * Count the number of English tweets containing the word "coronavirus"
  */
-SELECT count(*) AS count
+
+SELECT count(DISTINCT data->>'id') AS count
 FROM tweets_jsonb
 WHERE data->>'lang' = 'en'
   AND to_tsvector(
